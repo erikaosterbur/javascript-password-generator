@@ -7,6 +7,14 @@ var numbersAllowed = window.confirm ("Do you want numbers in your password?");
 var lowercaseAllowed = window.confirm ("Do you want lowercase letters in your password?");
 var uppercaseAllowed = window.confirm ("Do you want uppercase letters in your password?");
 
+if (numberOfCharacters <= 8) {
+  alert ("Refresh the page and choose a number between 8 and 128")
+}
+
+if (numberOfCharacters >= 128) {
+  alert ("Refresh the page and choose a number between 8 and 128")
+}
+
 
 numberOfCharacters = parseInt(numberOfCharacters);
 
@@ -30,18 +38,18 @@ function getNumbers () {
 
 function getLowercase () {
   var lowercase = "";
-    if (lowercaseAllowed) {
-        lowercase ="abcdefghijklmnopqrstuvwxyz";
-    }
-      return lowercase;
+  if (lowercaseAllowed) {
+      lowercase ="abcdefghijklmnopqrstuvwxyz";
+  }
+  return lowercase; 
 }
 
 function getUppercase () {
   var uppercase = "";
-    if (uppercaseAllowed) {
+  if (uppercaseAllowed) {
       uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    }
-    return uppercase;
+  }
+  return uppercase;
 }
 
 var characterSet = getSpecChar () + getNumbers () + getLowercase () + getUppercase ()
