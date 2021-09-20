@@ -1,15 +1,15 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var numberOfCharacters = window.prompt ("How many characters do you want in your password? (8-128)");
+var numberOfCharacters = window.prompt ("How many characters do you want in your password? (between 8-128)");
 var specialCharsAllowed = window.confirm ("Do you want special characters in your password?");
 var numbersAllowed = window.confirm ("Do you want numbers in your password?");
 var lowercaseAllowed = window.confirm ("Do you want lowercase letters in your password?");
 var uppercaseAllowed = window.confirm ("Do you want uppercase letters in your password?");
 
-if (numberOfCharacters < 8 || numberOfCharacters > 128) {
+while (numberOfCharacters < 8 || numberOfCharacters > 128) {
   alert ("Choose a number between 8 and 128");
-  numberOfCharacters = window.prompt ("How many characters do you want in your password?")
+  numberOfCharacters = window.prompt ("How many characters do you want in your password? (between 8-128")
 };
 
 numberOfCharacters = parseInt(numberOfCharacters);
