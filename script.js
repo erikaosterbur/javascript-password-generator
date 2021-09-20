@@ -8,75 +8,72 @@ var lowercaseAllowed = window.confirm ("Do you want lowercase letters in your pa
 var uppercaseAllowed = window.confirm ("Do you want uppercase letters in your password?");
 
 
-var numberOfCharacters = parseInt(numberOfCharacters);
+numberOfCharacters = parseInt(numberOfCharacters);
 
 console.log (numberOfCharacters);
 
 function getSpecChar () {
+  var symbols = "";
   if (specialCharsAllowed) {
-    var symbols = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-  return symbols
+      symbols = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  }
+  return symbols;
 }
-};
 
 function getNumbers () {
+  var numbers = "";
   if (numbersAllowed) {
-    var numbers = "0123456789"
-    }
-  return numbers
-  };
+      numbers = "0123456789";
+  }
+  return numbers;
+}
 
 function getLowercase () {
-  if (lowercaseAllowed) {
-    var lowercase = "abcdefghijklmnopqrstuvwxyz"
-  }
-  return lowercase
-};
+  var lowercase = "";
+    if (lowercaseAllowed) {
+        lowercase ="abcdefghijklmnopqrstuvwxyz";
+    }
+      return lowercase;
+}
 
 function getUppercase () {
-  if (uppercaseAllowed) {
-    var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  }
-  return uppercase
-};
+  var uppercase = "";
+    if (uppercaseAllowed) {
+      uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+    return uppercase;
+}
 
-var characterSet = symbols.concat(numbers, lowercase, uppercase);
+var characterSet = getSpecChar () + getNumbers () + getLowercase () + getUppercase ()
+  
+console.log (characterSet);
 
-console.log(characterSet);
+var splitCharacters = characterSet.split("");
 
-function finalPassword () {
-  var password = [Math.floor(Math.random() * characterSet.length)];
-};
+console.log (splitCharacters);
 
-console.log (password);
+function generatePassword(l) {
+  var result = "";
+  var characters = characterSet;
+  var charactersLength = numberOfCharacters;
+  for ( var i = 0; i < charactersLength; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
+}
 
-
-
-
-
-
-
-
-
-// var characterSet = function.concat(getSpecChar, getNumber, getLowercase, getUppercase);
-
-// console.log (characterSet);
-
+console.log(generatePassword());
 
 
-// function generatePassword(){
-//   var finalPassword = characterSet[Math.floor(Math.random() * numberOfCharacters)]
-//   return finalPassword;
-// }
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 
-//   passwordText.value = password;
+}
 
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
