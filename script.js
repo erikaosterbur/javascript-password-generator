@@ -7,14 +7,10 @@ var numbersAllowed = window.confirm ("Do you want numbers in your password?");
 var lowercaseAllowed = window.confirm ("Do you want lowercase letters in your password?");
 var uppercaseAllowed = window.confirm ("Do you want uppercase letters in your password?");
 
-if (numberOfCharacters <= 8) {
-  alert ("Refresh the page and choose a number between 8 and 128")
-}
-
-if (numberOfCharacters >= 128) {
-  alert ("Refresh the page and choose a number between 8 and 128")
-}
-
+if (numberOfCharacters < 8 || numberOfCharacters > 128) {
+  alert ("Choose a number between 8 and 128");
+  numberOfCharacters = window.prompt ("How many characters do you want in your password?")
+};
 
 numberOfCharacters = parseInt(numberOfCharacters);
 
