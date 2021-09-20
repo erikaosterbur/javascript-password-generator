@@ -52,13 +52,11 @@ var splitCharacters = characterSet.split("");
 
 console.log (splitCharacters);
 
-function generatePassword(l) {
+function generatePassword() {
   var result = "";
-  var characters = characterSet;
-  var charactersLength = numberOfCharacters;
-  for ( var i = 0; i < charactersLength; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * 
-charactersLength));
+  for ( var i = 0; i < numberOfCharacters; i++ ) {
+    result += characterSet.charAt(Math.floor(Math.random() * 
+    characterSet.length));
  }
  return result;
 }
