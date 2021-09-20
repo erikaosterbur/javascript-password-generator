@@ -1,71 +1,71 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var numberOfCharacters = window.prompt ("How many characters do you want in your password? (between 8-128)");
-var specialCharsAllowed = window.confirm ("Do you want special characters in your password?");
-var numbersAllowed = window.confirm ("Do you want numbers in your password?");
-var lowercaseAllowed = window.confirm ("Do you want lowercase letters in your password?");
-var uppercaseAllowed = window.confirm ("Do you want uppercase letters in your password?");
-
-while (numberOfCharacters < 8 || numberOfCharacters > 128) {
-  alert ("Choose a number between 8 and 128");
-  numberOfCharacters = window.prompt ("How many characters do you want in your password? (between 8-128")
-};
-
-numberOfCharacters = parseInt(numberOfCharacters);
-
-console.log (numberOfCharacters);
-
-function getSpecChar () {
-  var symbols = "";
-  if (specialCharsAllowed) {
-      symbols = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-  }
-  return symbols;
-}
-
-function getNumbers () {
-  var numbers = "";
-  if (numbersAllowed) {
-      numbers = "0123456789";
-  }
-  return numbers;
-}
-
-function getLowercase () {
-  var lowercase = "";
-  if (lowercaseAllowed) {
-      lowercase ="abcdefghijklmnopqrstuvwxyz";
-  }
-  return lowercase; 
-}
-
-function getUppercase () {
-  var uppercase = "";
-  if (uppercaseAllowed) {
-      uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  }
-  return uppercase;
-}
-
-var characterSet = getSpecChar () + getNumbers () + getLowercase () + getUppercase ()
-  
-console.log (characterSet);
-
-var splitCharacters = characterSet.split("");
-
-console.log (splitCharacters);
-
 function generatePassword() {
+  var numberOfCharacters = window.prompt ("How many characters do you want in your password? (between 8-128)");
+  var specialCharsAllowed = window.confirm ("Do you want special characters in your password?");
+  var numbersAllowed = window.confirm ("Do you want numbers in your password?");
+  var lowercaseAllowed = window.confirm ("Do you want lowercase letters in your password?");
+  var uppercaseAllowed = window.confirm ("Do you want uppercase letters in your password?");
+
+  while (numberOfCharacters <= 8 || numberOfCharacters >= 128) {
+    alert ("Choose a number between 8 and 128");
+      numberOfCharacters = window.prompt ("How many characters do you want in your password? (between 8-128")
+  };
+
+  numberOfCharacters = parseInt(numberOfCharacters);
+
+  console.log (numberOfCharacters);
+
+  function getSpecChar () {
+    var symbols = "";
+    if (specialCharsAllowed) {
+        symbols = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+    }
+    return symbols;
+  }
+
+  function getNumbers () {
+    var numbers = "";
+    if (numbersAllowed) {
+        numbers = "0123456789";
+    }
+    return numbers;
+  }
+
+  function getLowercase () {
+    var lowercase = "";
+    if (lowercaseAllowed) {
+        lowercase ="abcdefghijklmnopqrstuvwxyz";
+   }
+    return lowercase; 
+  }
+
+  function getUppercase () {
+    var uppercase = "";
+    if (uppercaseAllowed) {
+        uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+    return uppercase;
+  }
+
+  var characterSet = getSpecChar () + getNumbers () + getLowercase () + getUppercase ()
+  
+  console.log (characterSet);
+
+  var splitCharacters = characterSet.split("");
+
+  console.log (splitCharacters);
+
+
   var result = "";
   for ( var i = 0; i < numberOfCharacters; i++ ) {
     result += characterSet.charAt(Math.floor(Math.random() * 
     characterSet.length));
- }
+  }
+  console.log("DATA: ",result)
  return result;
 }
-
-console.log(generatePassword());
 
 
 // Write password to the #password input
@@ -79,3 +79,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
